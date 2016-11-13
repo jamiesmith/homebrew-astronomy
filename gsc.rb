@@ -27,15 +27,8 @@ OSX_MAKE
     end
 
     mkdir bin    
-    puts "prefix #{prefix}" 
-    system "ls -l #{prefix}"
-    puts "bin.   #{bin}"
-    system "ls -l #{bin}"
-
     system "cp -r N* S* #{prefix}/"
-    puts "Running their cp #{bin}"
     
-    system "/usr/local/bin/tree  bin"
     cp "./bin/gsc", "#{bin}/"
     cp "./bin/decode", "#{bin}/"
     cp "./bin/regions.ind", "#{bin}/"
