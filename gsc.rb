@@ -2,7 +2,7 @@ class Gsc < Formula
   desc "The Guide Star Catalog I"
   homepage "http://gsss.stsci.edu"
   url "http://cdsarc.u-strasbg.fr/viz-bin/nph-Cat/tar.gz?bincats/GSC_1.2"
-  version "1.2"
+
   # Can't have the sha- I don't know if they change the data
 
   def gen_osx_make
@@ -18,17 +18,17 @@ OSX_MAKE
 
     File.write("Makefile.osx", osxmake)
   end
-  
+
   def install
     cd "src/" do
       gen_osx_make
-      system "make -f Makefile.osx"
-      system "make -f Makefile.osx install_osx GSCDAT=#{pwd}/.."
+      system "make", "-f", "Makefile.osx"
+      system "make", "-f", "Makefile.osx", "install_osx", "GSCDAT=#{pwd}/.."
     end
 
-    mkdir bin    
+    mkdir bin
     system "cp -r N* S* #{prefix}/"
-    
+
     cp "./bin/gsc", "#{bin}/"
     cp "./bin/decode", "#{bin}/"
     cp "./bin/regions.ind", "#{bin}/"
@@ -36,6 +36,6 @@ OSX_MAKE
   end
 
   test do
-    system "GSCDAT=#{prefix}  gsc -c 111+2"
+    system "GSCDAT=#{prefix}", "gsc", "-c", "111+2"
   end
 end
