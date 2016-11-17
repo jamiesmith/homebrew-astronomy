@@ -2,8 +2,12 @@ class Gsc < Formula
   desc "The Guide Star Catalog I"
   homepage "http://gsss.stsci.edu"
   url "http://cdsarc.u-strasbg.fr/viz-bin/nph-Cat/tar.gz?bincats/GSC_1.2"
+  # not sure this won't change - they might update.
+  # If this starts failing I will have to disable the sha
+  #
+  sha256 "7f9a25155b47e625db3460a3f9da500b851da7847c388f4dea93aa7c98d0cef1"
 
-  # Can't have the sha- I don't know if they change the data
+
 
   def gen_osx_make
     osxmake = <<OSX_MAKE
